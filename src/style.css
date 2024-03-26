@@ -1,0 +1,81 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+
+header {
+    margin:0%;
+}
+
+body {
+    background-color:gray;
+    margin: 0%;
+}
+
+h1 {
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    margin-top: 100px;
+}
+
+h1, h2 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+/* Estilo para o container que armazena os cards */
+.container {
+    display: flex;
+    justify-content: space-between; /* Distribui os items horizontalmente, com espaço entre eles */
+    gap: 20px; /* Espaçamento entre os cards */
+    flex-wrap: wrap; /* Permite que os cards sejam distribuídos em várias linhas */
+}
+
+/* Estilo para os cards */
+.card {
+    width: calc(33.33% - 20px); /* Largura dos cards (33.33% - 20px devido ao espaçamento entre os cards) */
+    background-color: violet; /* Cor de fundo do card */
+    border-radius: 10px; /* Borda arredondada */
+    padding: 20px; /* Espaçamento interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+  /* Estilo para o título do filme */
+  .card h2 {
+    font-size: 20px;
+    margin-bottom: 20px; /* Espaçamento inferior */
+  }
+  
+  /* Estilo para o ano de lançamento */
+  .card h3 {
+    font-size: 16px;
+    color: #666; /* Cor do texto */
+    margin-bottom: 10px; /* Espaçamento inferior */
+  }
+  
+  /* Estilo para a descrição do filme */
+  .card p {
+    font-size: 14px;
+    color: #333; /* Cor do texto */
+  }
+  
+#root {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 75px;
+    margin-bottom: 70px;
+  }
+
+  footer {
+    font-family: "Raleway", sans-serif;
+    font-size: 20px;
+    color:beige ;
+    margin-bottom: 4px;
+    width: 100%;
+    background: #422a55;
+    box-shadow: -6px 6px 9px #422a55, 6px -6px 9px #666;
+    text-align: center;
+  }
+  
