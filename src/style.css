@@ -25,7 +25,7 @@ h1, h2 {
 
 
 /* Estilo para o container que armazena os cards */
-.container {
+#movies-container > div {
     display: flex;
     justify-content: space-between; /* Distribui os items horizontalmente, com espaço entre eles */
     gap: 20px; /* Espaçamento entre os cards */

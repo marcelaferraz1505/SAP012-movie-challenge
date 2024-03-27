@@ -12,7 +12,7 @@ document.getElementById('root').appendChild(App());
 document.getElementById('root').appendChild(App());*/
 
 
-import { fetchMovies } from './api';
+import { fetchMovies } from './components/api.js';
 
 // Função para criar um elemento de card com os dados do filme
 function createMovieCard(movie) {
@@ -37,7 +37,7 @@ function createMovieCard(movie) {
 
 // Função para buscar os filmes e renderizar na página
 function renderMovies() {
-  const rootElement = document.getElementById('root');
+  const rootElement = document.getElementById('movies-container');
 
   // Limpa o conteúdo do elemento root
   rootElement.innerHTML = '';
