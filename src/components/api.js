@@ -1,37 +1,58 @@
-/*const options = { //const que armazena um objeto JavaScript.
-    method: 'GET', //(requisição http tipo get)associa uma propriedade de um objeto a uma função que será chamada quando tal propriedade é acessada. 
+
+
+    // Esta função é responsável por fazer uma solicitação à API do TMDB para obter uma lista de filmes populares.
+// Retorna uma Promise que resolve com os filmes obtidos da API ou rejeita com um erro se ocorrer algum problema durante a solicitação.
+
+export function fetchMovies() {
+  // Configuração das opções para a solicitação, incluindo método, cabeçalhos e autorização.
+  const options = {
+    method: 'GET',
     headers: {
-      accept: 'application/json', //queremos receber os dados da resposta no formato JSON.
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NzllMzQxNTk2MTZjNDEyYTE5YmI2MTY1ZjQxMTgwZSIsInN1YiI6IjY1ZjlmNGQwNWZmMzRlMDE2M2I1ZDUxYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.A_AZPCdoockN7tiaRFs-8bTbKIKJy14iaBo8pV7i8W0' 
+      accept: 'application/json', // Define o tipo de conteúdo aceito como JSON
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NzllMzQxNTk2MTZjNDEyYTE5YmI2MTY1ZjQxMTgwZSIsInN1YiI6IjY1ZjlmNGQwNWZmMzRlMDE2M2I1ZDUxYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.A_AZPCdoockN7tiaRFs-8bTbKIKJy14iaBo8pV7i8W0' // Chave de autorização necessária para acessar a API
     }
   };
-  
-  fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc', options) //para fazer uma requisição HTTP para a API do The Movie Database (TMDb) com a URL fornecida e as opções definidas anteriormente
+
+  // Realiza a solicitação à API do TMDB para obter os filmes populares com base nas opções fornecidas.
+  return fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc', options)
+    // Converte a resposta da API em formato JSON.
     .then(response => response.json())
-    .then(response => console.log(response))
-    .catch(err => console.error(err));
+    // Extrai os resultados da resposta JSON, que contêm os filmes.
+    .then(response => {
+      const movies = response.results; // Extrai a lista de filmes dos resultados.
+      return movies; // Retorna a lista de filmes.
+    })
+    // Captura e trata qualquer erro que ocorra durante a solicitação.
+    .catch(err => console.error(err)); // Registra o erro no console, se houver.
+}
 
-    //criar meu código em app.js com base nas informações que estão aqui, excluir assim que criar em app js
-
-
-    //criar uma função que englobe tudo, retirar o console log e o response será response.result pra realmente retornar a informação,  exportar essa função pro app.js, no app js importar a função */
-    export function fetchMovies() {
-      const options = {
-        method: 'GET',
-        headers: {
-          accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NzllMzQxNTk2MTZjNDEyYTE5YmI2MTY1ZjQxMTgwZSIsInN1YiI6IjY1ZjlmNGQwNWZmMzRlMDE2M2I1ZDUxYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.A_AZPCdoockN7tiaRFs-8bTbKIKJy14iaBo8pV7i8W0'
-        }
-      };
-    
-      return fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc', options)
-        .then(response => response.json())
-        .then(response => {
-          const movies = response.results; 
-          return movies;
-        })
-        .catch(err => console.error(err));
+export function fetchMovieDetails(movieId) {
+  // Configuração das opções para a solicitação, incluindo método, cabeçalhos e autorização.
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json', // Define o tipo de conteúdo aceito como JSON
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NzllMzQxNTk2MTZjNDEyYTE5YmI2MTY1ZjQxMTgwZSIsInN1YiI6IjY1ZjlmNGQwNWZmMzRlMDE2M2I1ZDUxYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.A_AZPCdoockN7tiaRFs-8bTbKIKJy14iaBo8pV7i8W0' // Chave de autorização necessária para acessar a API
     }
+  };
+  // movieId=1011985 //preciso remover esse código daqui
+  // Realiza a solicitação à API do TMDB para obter os filmes populares com base nas opções fornecidas.
+  return fetch(
+  `https://api.themoviedb.org/3/movie/${movieId}`, options)
+    // Converte a resposta da API em formato JSON.
+    .then(response => response.json())
+    // Extrai os resultados da resposta JSON, que contêm os filmes.
+    .then(response => {
+      // const movies = response.results; // Extrai a lista de filmes dos resultados.
+      // return movies; // Retorna a lista de filmes. 
+      console.log(response)
+      return response;
+    })
+    // Captura e trata qualquer erro que ocorra durante a solicitação.
+    .catch(err => console.error(err)); // Registra o erro no console, se houver.
+}
+
+
     
 
     

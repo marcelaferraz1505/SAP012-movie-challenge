@@ -32,13 +32,13 @@
 
 // export default App;
 
-export const Card = () => {
-    const card = document.createElement('div');
-    card.className = 'container-card'; // Adicione uma classe para estilização no CSS
+// export const Card = () => {
+//     const card = document.createElement('div');
+//     card.className = 'container-card'; // Adicione uma classe para estilização no CSS
 
-    data.innerHTML += `
-    <h2>titulo: ${item.title} </h2>
-    <h3>data: ${item.release_year} </h3>
-    <p>descrição: ${item.description} </p>
-    `;
-}
+//     data.innerHTML += `
+//     <h2>titulo: ${item.title} </h2>
+//     <h3>data: ${item.release_year} </h3>
+//     <p>descrição: ${item.description} </p>
+//     `;
+// }
