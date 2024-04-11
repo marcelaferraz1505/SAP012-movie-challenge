@@ -82,6 +82,17 @@ h1, h2 {
     font-size: 14px;
     color: whitesmoke; /* Cor do texto */
   }
+  .movie-details {
+  width: calc(25% - 20px); /* Reduzindo a largura dos cards para 25% */
+  color: aliceblue;
+  border-radius: 10px; /* Borda arredondada */
+  padding: 150px; /* Reduzindo o espaçamento interno */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /*Sombra*/ 
+  position: relative;
+  background-color: #666;
+   
+
+  }
   
 #root {
     display: flex;
