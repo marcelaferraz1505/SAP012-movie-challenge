@@ -1,117 +1,53 @@
-
-
-//import { fetchMovies } from './api';
-
-// Função para criar um elemento de card com os dados do filme
-// function createMovieCard(movie) {
-//   const card = document.createElement('div');
-//   card.className = 'card';
-
-//   const title = document.createElement('h2');
-//   title.textContent = movie.titulo; // Alterado para 'titulo'
-
-//   const releaseYear = document.createElement('h3');
-//   releaseYear.textContent = movie.ano; // Alterado para 'ano'
-
-//   const description = document.createElement('p');
-//   description.textContent = movie.descricao; // Alterado para 'descricao'
-
-//   card.appendChild(title);
-//   card.appendChild(releaseYear);
-//   card.appendChild(description);
-
-//   return card;
-// }
-
-// // Função para buscar os filmes e renderizar na página
-// function renderMovies() {
-//   const container = document.getElementById('movies-container');
-
-//   // Limpa o conteúdo do container
-//   container.innerHTML = '';
-
-//   // Busca os filmes
-//   fetchMovies()
-//     .then(movies => {
-//       // Itera sobre os filmes e cria os cards
-//       movies.forEach(movie => {
-//         const card = createMovieCard(movie);
-//         container.appendChild(card);
-//       });
-//     })
-//     .catch(error => console.error(error));
-// }
-
-// // Executa a função para renderizar os filmes quando o script é carregado
-// renderMovies();
-
-import { fetchMovies } from './api';
-
-// Função para criar um elemento de card com os dados do filme, incluindo a imagem do poster
-function createMovieCard(movie) {
+// Função para criar um cartão de filme
+export function createMovieCard(movie) {
+  // Cria um elemento <div> para o cartão
   const card = document.createElement('div');
-  card.className = 'card';
-console.log(card)
-  // Adiciona a imagem do poster do filme
-  /*if (poster_path) { // Verifica se o filme tem um poster_path
-    const img = document.createElement('img');
-    img.src=`https://image.tmdb.org/t/p/w500/${poster_path}`; // URL base + poster_path
-    img.alt = movie.title; // Define o atributo alt da imagem como o título do filme
-    card.appendChild(img);
-  }
-  else { result = 'erro'
+  card.className = 'card'; // Adiciona a classe 'card' ao cartão
 
-  };*/
-  if (movie) {
+  // Verifica se o filme tem uma imagem de capa
+  if (movie.poster_path) {
+    // Se tiver, cria uma imagem e define seu atributo src com base no poster_path do filme
     const img = document.createElement('img');
-    console.log('123=', movie)
-    img.src = `https://image.tmdb.org/t/p/w500/${backdrop_path}`; // URL base + poster_path
-    img.alt = movie.title; // Define o atributo alt da imagem como o título do filme
-    card.appendChild(img);
-    console.log(img)
+    img.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`; // URL base + poster_path
+    img.alt = movie.title; // Define o texto alternativo da imagem como o título do filme
+    card.appendChild(img); // Adiciona a imagem ao cartão
   } else {
-    console.error('Erro: Filme sem imagem do poster');
+    // Se não tiver uma imagem de capa, cria um parágrafo com uma mensagem informando que a imagem não está disponível
+    const noImageText = document.createElement('p');
+    noImageText.textContent = 'Imagem não disponível';
+    card.appendChild(noImageText); // Adiciona o parágrafo ao cartão
   }
 
+  // Cria um link para os detalhes do filme
+  const anchor = document.createElement('a');
+  anchor.href = `#${movie.id}`; // Define o href do link como o ID do filme
+  anchor.appendChild(card); // Adiciona o cartão como filho do link
+
+  return anchor; // Retorna o link como resultado da função
+}
+
+// Função para criar os detalhes de um filme
+export function createMovieDetails(movie) {
+  // Cria um elemento <div> para os detalhes do filme
+  const detailsContainer = document.createElement('div');
+  detailsContainer.className = 'movie-details'; // Adiciona a classe 'movie-details' ao contêiner
+
+  // Cria um título (<h2>) com o título do filme
   const title = document.createElement('h2');
-  title.textContent = movie.title;
+  title.textContent = movie.title; // Define o texto do título como o título do filme
 
-  const releaseYear = document.createElement('h3');
-  releaseYear.textContent = movie.release_date;
+  // Cria um parágrafo (<p>) com a visão geral do filme
+  const overview = document.createElement('p');
+  overview.textContent = movie.overview; // Define o texto do parágrafo como a visão geral do filme
 
-  const description = document.createElement('p');
-  description.textContent = movie.overview;
+  // Cria um parágrafo (<p>) com a data de lançamento do filme
+  const releaseDate = document.createElement('p');
+  releaseDate.textContent = `Release Date: ${movie.release_date}`; // Define o texto do parágrafo como a data de lançamento do filme
 
-  card.appendChild(title);
-  card.appendChild(releaseYear);
-  card.appendChild(description);
+  // Adiciona os elementos criados ao contêiner de detalhes
+  detailsContainer.appendChild(title);
+  detailsContainer.appendChild(overview);
+  detailsContainer.appendChild(releaseDate);
 
-  return card;
+  return detailsContainer; // Retorna o contêiner de detalhes como resultado da função
 }
-
-// Função para buscar os filmes e renderizar na página
-function renderMovies() {
-  const container = document.getElementById('movies-container');
-
-  // Limpa o conteúdo do container
-  container.innerHTML = '';
-
-  // Busca os filmes
-  fetchMovies()
-    .then(movies => {
-      // Itera sobre os filmes e cria os cards
-      movies.forEach(movie => {
-        const card = createMovieCard(movie);
-        container.appendChild(card);
-      });
-    })
-    .catch(error => console.error(error));
-}
-
-// Executa a função para renderizar os filmes quando o script é carregado
-renderMovies();
-
-
-
-
-
