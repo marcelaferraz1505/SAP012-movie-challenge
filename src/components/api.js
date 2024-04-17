@@ -43,7 +43,7 @@ export function fetchMovieDetails(movieId) {
     .then(response => {
       // const movies = response.results; // Extrai a lista de filmes dos resultados.
       // return movies; // Retorna a lista de filmes. 
-      console.log(response)
+      // console.log(response)
       return response;
     })
     // Captura e trata qualquer erro que ocorra durante a solicitação.
