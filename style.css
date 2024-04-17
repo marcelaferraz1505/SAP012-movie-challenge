@@ -1,0 +1,116 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    margin:100px;
+}
+
+body {
+   
+    justify-content: center;
+    align-items: center;
+    background-color:#333;
+    margin: 0%;
+
+}
+
+h1 {
+    margin-top: 50px; /* Adicionando margem superior de 50px */
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0; 
+    text-align: center;
+    position: absolute;
+    
+}
+
+h1, h2 {
+  color: aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+    position:relative;
+   top: 40%;
+   left: 0%;
+    
+}
+
+
+
+/* Estilo para o container que armazena os cards */
+#movies-container > div {
+    display: flex;
+    justify-content: space-between; /* Distribui os items horizontalmente, com espaço entre eles */
+    gap: 20px; /* Espaçamento entre os cards */
+    flex-wrap: wrap; /* Permite que os cards sejam distribuídos em várias linhas */
+}
+
+/*Estilo para os cards */
+ .card {
+  width: calc(25% - 20px); /* Reduzindo a largura dos cards para 25% */
+  color: aliceblue;
+  background-color: red; /* Cor de fundo do card */
+  border-radius: 10px; /* Borda arredondada */
+  padding: 20px; /* Reduzindo o espaçamento interno */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /*Sombra*/ 
+  position: relative;  
+} 
+
+   .card h2 {
+    font-size: 20px;
+    margin-bottom: 10px; /* Espaçamento inferior entre o título e o conteúdo */
+    text-align: center; /* Alinhamento centralizado do texto */
+    position: absolute; /* Posição absoluta para realinhar o título dentro do card */
+    top: 0px; /* Distância de 10px a partir do topo do card */
+    left: 0; /* Alinhamento do título à esquerda dentro do card */
+    right: 0; /* Alinhamento do título à direita dentro do card */
+}
+
+ 
+  
+  /* Estilo para o ano de lançamento */
+  .card h3 {
+    font-size: 16px;
+    color: whitesmoke; /* Cor do texto */
+    margin-bottom: 10px; /* Espaçamento inferior */
+  }
+  
+  /* Estilo para a descrição do filme */
+  .card p {
+    font-size: 14px;
+    color: whitesmoke; /* Cor do texto */
+  }
+  .movie-details {
+  width: calc(25% - 20px); /* Reduzindo a largura dos cards para 25% */
+  color: aliceblue;
+  border-radius: 10px; /* Borda arredondada */
+  padding: 150px; /* Reduzindo o espaçamento interno */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /*Sombra*/ 
+  position: relative;
+  background-color: #666;
+   
+
+  }
+  
+#root {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 75px;
+    margin-bottom: 70px;
+  }
+
+  footer {
+    margin-top: 50px;
+    font-family: "Raleway", sans-serif;
+    font-size: 20px;
+    color:beige ;
+    margin-bottom: 4px;
+    width: 100%;
+    background:grey;
+    box-shadow: -6px 6px 9px #ff3002, 6px -6px 9px #666;
+    text-align: center;
+  }
+  
