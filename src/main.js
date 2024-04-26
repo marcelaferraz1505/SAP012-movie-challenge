@@ -1,64 +1,68 @@
-// Importa as funções necessárias para obter dados dos filmes e criar elementos HTML para exibi-los
 import { fetchMovies, fetchMovieDetails } from './components/api.js';
 import { createMovieCard, createMovieDetails } from './components/App.js';
 
-// Função para renderizar a lista de filmes na página
-function renderMovies() {
-  // Obtém o elemento onde os filmes serão renderizados
-  const rootElement = document.getElementById('movies-container');
 
-  // Chama a função para obter os dados dos filmes da API
-  fetchMovies()
-    .then(movies => {
-      // Cria um contêiner para os filmes
+function renderMovies() { //renderiza o filme no container
+  const rootElement = document.getElementById('movies-container');
+  fetchMovies() //promessa
+    .then(movies => { //resposta
+      
       const container = document.createElement('div');
 
-      // Para cada filme, cria um elemento HTML de cartão e adiciona ao contêiner
+      //percorre todo array de filmes
       movies.forEach(movie => {
         const card = createMovieCard(movie);
         container.appendChild(card);
       });
 
-      // Adiciona o contêiner ao elemento raiz
       rootElement.appendChild(container);
     })
     .catch(error => console.error(error)); // Captura erros de requisição
 }
 
-// Função para renderizar os detalhes de um filme na página
 function renderMovieDetails() {
-  // Obtém o elemento onde os detalhes do filme serão renderizados
   const rootElement = document.getElementById('movies-container');
   
   // Obtém o ID do filme da URL
   const movieId = window.location.hash.substring(1);
 
-  // Se houver um ID de filme na URL, busca os detalhes do filme
+  // Se id do filme, busca os detalhes 
   if (movieId) {
     fetchMovieDetails(movieId)
       .then(movie => {
-        // Cria os elementos HTML para exibir os detalhes do filme
+        //cria html p detalhes 
         const details = createMovieDetails(movie);
-        // Limpa o conteúdo atual e adiciona os detalhes do filme ao elemento raiz
+        //limpa cont, adc raiz
         rootElement.innerHTML = '';
         rootElement.appendChild(details);
       })
       .catch(error => console.error(error)); // Captura erros de requisição
   } else {
-    // Se não houver ID de filme na URL, renderiza a lista de filmes
+    //Se não ID, renderiza lista de filmes
     renderMovies();
   }
 }
 
-// Função para lidar com mudanças na URL da página
+//mudanças na URL da página
 function handleHashChange() {
-  // Adiciona um ouvinte de evento para detectar mudanças no hash da URL
+  //ouvinte de evento de mudança
   window.addEventListener('hashchange', renderMovieDetails);
 }
-
-// Quando o conteúdo do documento HTML é carregado...
+//carregamento da página
 document.addEventListener('DOMContentLoaded', () => {
-  // ...renderiza os detalhes do filme e adiciona o ouvinte de evento para mudanças na URL
+  // ...renderiza detalhes e adc mudança
   renderMovieDetails();
   handleHashChange();
 });
+
+function clearAndReturnToHomePage() {
+  const moviesContainer = document.getElementById('movies-container');
+  moviesContainer.innerHTML = '';
+  
+  // Retorna à página inicial
+  window.location.href = '/';
+}
+
+// Adiciona um ouvinte de evento ao botão "Mostrar Todos"
+const showAllButton = document.getElementById('showAllButton');
+showAllButton.addEventListener('click', clearAndReturnToHomePage);
